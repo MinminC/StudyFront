@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>화면 구조 잡기 완성~~</title>
+    <link rel="stylesheet" href="/resources/css/19complete.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- .wrap>(#header>#header$*3)+#navigator+(#content>#content$*3)+#footer -->
+    <div class="wrap">
+        <div id="header">
+            <div id="header1">
+                <a href="#"><img src="resources/image/ff.png" alt="logo"></a>
+            </div>
+            <div id="header2">
+                <form action="test.do" id="search-form">
+                    <div id="searchbox">
+                        <input type="search" name="keyword">
+                    </div>
+                    <div id="searchbtn">
+                        <input type="submit" value="search">
+                    </div>
+                </form>
+            </div>
+            <div id="header3">
+                <p>
+                    번호에 마우스를 올리면 이 자리에 <br>이미지가 나옵니다!
+                </p>
+                <a href="" id="btn1">1</a>
+                <img src="resources/image/flower2.PNG" alt="꽃2">
+                <a href="" id="btn2">2</a>
+                <img src="resources/image/flower3.PNG" alt="꽃3">
+                <a href="" id="btn3">3</a>
+                <img src="resources/image/flower4.PNG" alt="꽃4">
+            </div>
+        </div>
+        <div id="navigator">
+            <a href="#header" id="top">
+                <p>▲</p>
+            </a>
+            <ul id="navi">
+                <li><a href="">Java</a></li>
+                <li><a href="">Oracle</a></li>
+                <li><a href="">FRONT-END</a>
+                    <ul>
+                        <li><a href="">HTML</a></li>
+                        <li><a href="">CSS</a></li>
+                        <li><a href="">JavaScript</a></li>
+                        <li><a href="">jQuery</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Server</a>
+                    <ul>
+                        <li><a href="">JDBC</a></li>
+                        <li><a href="">Servlet</a></li>
+                        <li><a href="">JSP</a></li>
+                        <li><a href="">AJAX</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Framework</a>
+                    <ul>
+                        <li><a href="">MyBatis</a></li>
+                        <li><a href="">Spring</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div id="content">
+            <div id="content1">
+                <div id="category">
+                    <ul>
+                        <li>FRONT-END
+                            <ul>
+                                <li><a href="">HTML</a></li>
+                                <li><a href="">CSS</a></li>
+                                <li><a href="">JavaScript</a></li>
+                                <li><a href="">jQuery</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="content2">
+                <div class="ad">
+                    <img src="/resources/image/flower1.PNG" alt="꽃" id="img-thumb">
+                    <img src="/resources/image/flower1.PNG" alt="꽃 확대" id="img-origin">
+                    <p class="ad-comment">벚꽃 피기 전까지 취업하자!!<br>
+                        마우스 올리면 사진 확대하기~</p>
+                </div>
+            </div>
+            <div id="content3">
+                <div id="login-form">
+                    <form action="test.do" method="post" id="login-form-input" style="z-index:0;">
+                        <div id="login-input-id-pwd">
+                            <input type="text" name="userId" placeholder="ID" required><br>
+                            <input type="password" name="userPwd" placeholder="password" required>
+                        </div>
+                        <div id="login-input-btn">
+                            <input type="submit" value="login" id="submitbtn">
+                        </div>
+                    </form>
+                    <div id="login-form-etc">
+                        <a href="df">회원가입</a>
+                        <a href="df">아이디 / 비밀번호 찾기</a>
+                    </div>
+                    <div id="weather">
+                        <iframe src="https://www.youtube.com/embed/tXV7dfvSefo" title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div id="kma" class="acc">
+                       <a href="#">▼기상청 : 마우스 올리면 아코디언▼</a>
+                       <p>내일의 날씨는<br> 오늘보다 더 포근하다고 합니당!</p>
+                    </div>
+                    <div id="flower-map" class="acc">
+                        <a href="#">▼벚꽃 지도▼</a>
+                        <p><img src="resources/image/f_map.jpg" alt="map"></p>
+                     </div>
+                     <div id="flower-party" class="acc">
+                        <a href="#">여행 명소</a>
+                        <p>석촌 호수<br>
+                            현충원<br>
+                            경포대<br>
+                            충주호
+                        </p>
+                     </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div id="footer-var">
+                <a href="#">이용 약관</a> |
+                <a href="#">개인정보취급방침</a> |
+                <a href="#">인재채용문의</a> |
+                <a href="#">고객센터</a>
+            </div>
+            <div id="footer-cont">
+                <p id="address">
+                    처음 널 봤을 때 왠지 다른 느낌<br>
+                    너와 함께 말하고 싶어 웃을 때마다 이 마음을 알아가<br>
+                    이젠 널 볼 때마다 나의 맘이 너무나 커져 이젠 나의 시간은<br>
+                    항상 너와 웃으며 이 밤을 그리워하며 하루를 아쉬워하며<br>
+                    또 너를 기다리겠지
+                </p>
+                <p id="copyright">
+                    Copyright © 2000-2000 벚꽃엔딩 가사 따옴 All Right Reserved
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
