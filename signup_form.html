@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입 폼</title>
+    <style>
+        label {
+            font-size: 10px;
+            color: rgb(177, 177, 177);
+        }
+
+        fieldset {
+            border: 1px solid lightgray;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="test.do">
+        <fieldset>
+            * 아이디 : <input type="text" id="userId" name="userId" required><br>
+            <label>첫글자는 반드시 영문자로, 그리고 영문자, 숫자를 포함하여 총 4~12자로 입력하시오</label><br><br>
+            * 비밀번호 : <input type="password" id="userPwd" name="userPwd" required><br>
+            <label>영문자, 숫자, 특수문자로 총 8~15자로 입력하시오.</label><br><br>
+            * 비밀번호 확인 : <input type="password" id="checkPwd" required><br>
+            <label>위의 비밀번호와 일치하게 입력하시오.</label><br><br>
+            * 이름 : <input type="text" id="userName" name="userName" required><br>
+            <label>한글로만 이루어져야하며 2글자 이상으로 입력하시오.</label><br><br>
+            * 이메일 : <input type="email" id="email" name="email"><br>
+            <label>이메일 형식에 맞춰서 입력하시오.</label><br><br>
+            * 취미 : <input type="text" id="hobby" name="hobby" placeholder="축구, 농구, 야구, 독서 등"><br><br>
+            * 거주지 : <select name="location" id="location">
+                <option value="seoul">서울</option>
+                <option value="incheon">인천</option>
+                <option value="kyongki">경기</option>
+                <option value="busan">부산</option>
+            </select><br><br>
+            <input type="submit" value="회원가입" onclick="return validate()">
+            <input type="reset" value="취소">
+        </fieldset>
+        <script>
+            function validate() {
+                //유효성검사 - 아이디
+                var userId = document.getElementById('userId');
+                var regExp = /^[A-Za-z][0-9a-zA-Z]{3,11}$/;
+                if (!regExp.test(userId.value)) {
+                    alert('아이디를 확인하세요.');
+                    userId.select();
+                    return false;
+                }
+                //유효성검사 - 비밀번호
+                var userPwd = document.getElementById('userPwd');
+                regExp = /^[A-Za-z0-9!@#%^]{8,15}$/;
+                if (!regExp.test(userPwd.value)) {
+                    alert('비밀번호를 확인하세요.');
+                    userPwd.select();
+                    return false;
+                }
+                //유효성검사 - 비밀번호 확인
+                var checkPwd = document.getElementById('checkPwd');
+                if (userPwd.value != checkPwd.value) {
+                    alert('비밀번호가 일치하지 않습니다.');
+                    checkPwd.select();
+                    return false;
+                }
+                //유효성검사 - 이름
+                var userName = document.getElementById('userName');
+                regExp = /^[가-힣]{2,}$/;
+                if (!regExp.test(userName.value)) {
+                    alert('이름을 확인하세요.');
+                    userName.select();
+                    return false;
+                }
+                //유효성검사 - 이메일
+                var email = document.getElementById('email');
+                regExp = /^\w+@\w+.\w+$/;
+                if (!regExp.test(email.value)) {
+                    alert('이메일을 확인하세요.');
+                    email.select();
+                    return false;
+                }
+                return true;
+            }
+        </script>
+    </form>
+</body>
+
+</html>
