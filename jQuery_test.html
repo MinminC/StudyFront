@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../resources/js/jquery-3.6.0.min.js"></script>
+    <style>
+        .q4-one {
+            border: 1px solid gray;
+            width: 200px;
+            height: 100px;
+            margin: auto;
+            position: relative;
+        }
+
+        #board {
+            width: 500px;
+            border: 1px solid bisque;
+        }
+
+        #board>tr {
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <form actino="#" method="get">
+        <fieldset>
+            <legend>문제 1</legend>
+            <h3>input 태그에 값을 입력하고, 버튼을 클릭했을 때 값이 숫자인지 아닌지 출력해주세요.</h3>
+            <p>(값이 숫자라면:"숫자입니다." 숫자가 아니면 "숫자가 아닙니다"를 alert로 출력)</p>
+            <input type="text" id="numChk">
+            <input type="button" id="btn1" value="판별">
+        </fieldset>
+    </form>
+    <script>
+        $(function () {
+            $('#btn1').click(function () {
+                var num = $('#numChk').val();
+                if (num / num != 1)
+                    alert("숫자가 아닙니다.");
+                else
+                    alert("숫자입니다");
+            })
+        })
+    </script>
+    <hr>
+    <form>
+        <fieldset>
+            <legend>문제 2</legend>
+            <h3>1~20 사이의 랜덤한 숫자를 생성해서 input 태그 안에 입력해주세요</h3>
+            랜덤 : <input type="text" id="ranNum"> <input type="button" id="btn2" value="생성">
+        </fieldset>
+    </form>
+    <script>
+        $(function () {
+            $('#btn2').click(function () {
+                $('#ranNum').val(parseInt(Math.random() * 20) + 1);
+                console.log(Math.ceil(Math.random() * 20));
+            })
+        })
+    </script>
+    <form>
+        <fieldset id="q3">
+            <legend>문제 3</legend>
+            <h3>체크박스</h3>
+            <input type="checkbox" class="lab" id="all"><label for="all">전체</label>
+            <input type="checkbox" class="lab" id="jav"><label for="jav">자바</label>
+            <input type="checkbox" class="lab" id="sec"><label for="sec">보안</label>
+            <hr>
+            <input type="checkbox" name="module" id="java" class="java chk"><label for="java">JAVA-자바</label><br>
+            <input type="checkbox" name="module" id="os" class="sec chk"><label for="os">OS-보안</label><br>
+            <input type="checkbox" name="module" id="oracle" class="java chk"><label for="oracle">Oracle-자바</label><br>
+            <input type="checkbox" name="module" id="network" class="sec chk"><label
+                for="network">Network-보안</label><br>
+            <input type="checkbox" name="module" id="web" class="java chk"><label for="web">Web-자바</label>
+        </fieldset>
+    </form>
+    <hr>
+    <script>
+        $(function () {
+            $('#all').on('change', function () {
+                if (this.checked)
+                    $('#q3').children(':checkbox').prop('checked', true);
+                else
+                    $('#q3').children(':checkbox').prop('checked', false)
+            })
+            // .prop()이란? 어떤 속성값으로 변경
+            $('#jav').on('change', function () {
+                if (this.checked)
+                    $('.java').prop('checked', true);
+                else {
+                    $('.java').prop('checked', false);
+                    $('#all').prop('checked', false);
+                }
+                if ($('#jav').prop('checked') && $('#sec').prop('checked'))
+                    $('.lab').prop('checked', true);
+            })
+            $('#sec').on('change', function () {
+                if (this.checked)
+                    $('.sec').prop('checked', true);
+                else {
+                    $('.sec').prop('checked', false);
+                    $('#all').prop('checked', false);
+                }
+                if ($('#jav').prop('checked') && $('#sec').prop('checked'))
+                    $('.lab').prop('checked', true);
+            })
+            // $(':checkbox').on('click', function () {
+            //     if (!$(':checkbox.java').prop('checked'))
+            //         $('#jav').prop('checked', false);
+            //     else
+            //         $('#jav').prop('checked', true);
+            //     if ($(':checkbox.sec').prop('checked'))
+            //         $('#sec').prop('checked', false);
+            //     else
+            //         $('#sec').prop('checked', true);
+
+            // })
+        })
+    </script>
+    <hr>
+    <div id="q4">
+        <h3>응용문제</h3>
+        <p>복제버튼 클릭 시 현재 버튼의 부모요소인 div를 복제시켜서 result(div)에 붙여넣기<br>
+            삭제버튼 클릭 시 현재 버튼의 부모요소인 div를 삭제시키기</p>
+        <div class="q4-one">
+            나는 부모div다<br>
+            <input type="button" class="copy" value="복제">
+            <input type="button" class="delete" value="삭제">
+        </div>
+        <div class="result">
+
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $('.copy').click(function () {
+                $(this).parent().clone(true).appendTo($('.result'));
+            })
+            $('.delete').click(function () {
+                $(this).parent().remove();
+            })
+        })
+    </script>
+    <hr>
+    <h3>글 작성</h3>
+    <div id="q5">
+        <label id="l0">글번호</label> /
+        <label id="l1">제목</label> /
+        <label id="l2">작성자</label> /
+        <label id="l3">조회수</label> /
+        <label id="l4">작성일</label>
+        <div id="new">
+            제목 : <input type="text" id="title" placeholder="제목"><br>
+            작성자 : <input type="text" id="user" placeholder="작성자"><br>
+            작성일 : <input type="datetime-local" id="today">
+            <input type="button" value="작성" id="btn5">
+            <table id="board">
+                <thead>
+                    <tr>
+                        <th>글번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>조회수</th>
+                        <th>작성일</th>
+                    </tr>
+                </thead>
+                <tbody id="insert">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $('#btn5').click(function () {//작성버튼
+                var count = 0;
+                var num = 0;
+                var newThing = $('<tr></tr>').append('<td>' + num++ + '</td>'
+                    + '<td>' + $(title).val() + '</td>'
+                    + '<td>' + $(user).val() + '</td>'
+                    + '<td class="cnt">' + count + '<button class="ck">클릭</button></td>'
+                    + '<td>' + $(today).val() + '</td>');
+                // $('<tr></tr>').
+                    $('#board>tbody').append(newThing);
+                })
+            $('#board>tbody').on('click', 'tr', function () {//행클릭
+                    $.each($(this).children(),function(index, value){//두가지 매개변수가 들어있는 함수 오버로딩된것
+                        $('#l'+index).text($(value).text());
+                    })
+                // $(this).children().each(function (index, value) {
+                //     $('#l' + (index)).text($(value).text());
+                // })
+            })
+            $('.ck').click(function(){
+                $(this).parent().text(count++);
+                console.log($(this).parent());
+                //Number($(this).parent().prev())+1
+            })
+        })
+    </script>
+
+    <!-- filter와 not의 차이!! -->
+    <ul>
+        <li>l1</li>
+        <p>p1</p>
+        <li>l2</li>
+        <li>l3</li>
+        <li>l4</li>
+        <p>p2</p>
+        <p>p3</p>
+        <li>l5</li>
+    </ul>
+    <script>
+        $(function(){
+            console.log($('ul').children().filter('p'));//p만 나옴
+            console.log($('ul').children().not('p'));//li만 나옴
+        })
+    </script>
+</body>
+
+</html>
