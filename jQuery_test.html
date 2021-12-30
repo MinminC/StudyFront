@@ -108,17 +108,6 @@
                 if ($('#jav').prop('checked') && $('#sec').prop('checked'))
                     $('.lab').prop('checked', true);
             })
-            // $(':checkbox').on('click', function () {
-            //     if (!$(':checkbox.java').prop('checked'))
-            //         $('#jav').prop('checked', false);
-            //     else
-            //         $('#jav').prop('checked', true);
-            //     if ($(':checkbox.sec').prop('checked'))
-            //         $('#sec').prop('checked', false);
-            //     else
-            //         $('#sec').prop('checked', true);
-
-            // })
         })
     </script>
     <hr>
@@ -184,21 +173,16 @@
                     + '<td>' + $(user).val() + '</td>'
                     + '<td class="cnt">' + count + '<button class="ck">클릭</button></td>'
                     + '<td>' + $(today).val() + '</td>');
-                // $('<tr></tr>').
-                    $('#board>tbody').append(newThing);
-                })
-            $('#board>tbody').on('click', 'tr', function () {//행클릭
-                    $.each($(this).children(),function(index, value){//두가지 매개변수가 들어있는 함수 오버로딩된것
-                        $('#l'+index).text($(value).text());
-                    })
-                // $(this).children().each(function (index, value) {
-                //     $('#l' + (index)).text($(value).text());
-                // })
+                $('#board>tbody').append(newThing);
             })
-            $('.ck').click(function(){
+            $('#board>tbody').on('click', 'tr', function () {//행클릭
+                $.each($(this).children(), function (index, value) {//두가지 매개변수가 들어있는 함수 오버로딩된것
+                    $('#l' + index).text($(value).text());
+                })
+            })
+            $('.ck').click(function () {
                 $(this).parent().text(count++);
                 console.log($(this).parent());
-                //Number($(this).parent().prev())+1
             })
         })
     </script>
@@ -215,9 +199,38 @@
         <li>l5</li>
     </ul>
     <script>
-        $(function(){
+        $(function () {
             console.log($('ul').children().filter('p'));//p만 나옴
             console.log($('ul').children().not('p'));//li만 나옴
+        })
+    </script>
+
+    <!-- each문 연습 -->
+    <ul id="ul-test">
+        <li id="d0">1</li>
+        <li id="d1">2</li>
+        <li id="d2">3</li>
+        <li id="d3">4</li>
+    </ul>
+    <button id="btn6">실행</button>
+    <script>
+        var lang = {
+            name: '박한별',
+            age: 20,
+            address: '서울시'
+        };
+        var nn = ['유한별', 22, '인천시'];
+
+        $(function () {
+            $('#btn6').click(function () {
+                    var cnn = 0;
+                $.each(lang, function (key, value) {//객체 lang. key-value 세트로 담겨있는 속성:속성값
+                    $('#d3').append('<span>'+lang[key]+'</span>');
+                })
+                $.each(nn, function (index, value) {//배열 nn. 배열의 index-해당값 세트로 담겨있음
+                    $('#d' + index).text(value);
+                })
+            })
         })
     </script>
 </body>
